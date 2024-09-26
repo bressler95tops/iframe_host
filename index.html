@@ -45,7 +45,7 @@
                         console.log("Attempting to initialize iframe value with local storage: " + cookie_value);
                     
                         if(cookie_value != null) {
-                            receiver.postMessage(cookie_value, '*');
+                            receiver.contentWindow.postMessage(cookie_value, '*');
                         }
                 }
             
