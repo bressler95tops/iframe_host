@@ -1,6 +1,4 @@
-window.onload = function() {
-    // Get the window displayed in the iframe.
-    console.log("Starting Host...");
+console.log("Starting Host...");
     
     var receiver = document.getElementById('receiver').contentWindow;
 
@@ -19,4 +17,3 @@ window.onload = function() {
     // Add an event listener that will execute the sendMessage() function
     // when the send button is clicked.
     btn.addEventListener('click', sendMessage);
-}
