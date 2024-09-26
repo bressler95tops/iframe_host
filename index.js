@@ -11,7 +11,7 @@ window.onload = function() {
         e.preventDefault();
 
         // Send a message with the text 'Hello Treehouse!' to the new window.
-        receiver.postMessage('cookie data!', 'https://iframehost.pages.dev/');
+        receiver.postMessage('cookie data!', 'https://iframehost.pages.dev');
     }
 
     // Add an event listener that will execute the sendMessage() function
