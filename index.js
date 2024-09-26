@@ -16,7 +16,11 @@ function receiveMessage(event){
 function init_iframe() {
     const cookie_value = localStorage.getItem("cookie_value");
     console.log("Attempting to initialize iframe value with local storage: " + cookie_value);
-    receiver.postMessage(cookie_value, '*');
+
+    if(cookie_value != null) {
+        receiver.postMessage(cookie_value, '*');
+    }
+    
 }
 
 setTimeout(function() {
