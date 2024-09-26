@@ -19,7 +19,7 @@ function init_iframe() {
     receiver.postMessage(cookie_value, '*');
 }
 
-setTimeOut(function() {
+setTimeout(function() {
     init_iframe();
 }, 2000);
 
