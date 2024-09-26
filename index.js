@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-window.addEventListener('message', receiveMessage, false);
 let receiver = document.getElementById('receiver').contentWindow;
+window.addEventListener('message', receiveMessage, false);
     
 function receiveMessage(event){
     console.log("Received something from embedded iFrame: " + event.origin);
