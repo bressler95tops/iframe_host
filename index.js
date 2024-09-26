@@ -19,8 +19,8 @@ function init_iframe() {
     receiver.postMessage(cookie_value, '*');
 }
 
-receiver.addEventListener("load", function() {
+setTimeOut(function() {
     init_iframe();
-});
+}, 2000);
 
 });
