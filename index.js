@@ -13,8 +13,8 @@ function receiveMessage(event){
 
 // A function to handle sending messages.
 function init_iframe() {
-    console.log("Attempting to initialize iframe value with local storage...");
     const cookie_value = localStorage.getItem("cookie_value");
+    console.log("Attempting to initialize iframe value with local storage: " + cookie_value);
     receiver.postMessage(cookie_value, '*');
 }
 
