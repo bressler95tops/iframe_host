@@ -27,15 +27,17 @@
                 function init_iframe() {
                     var iframe = document.createElement('iframe');
                     iframe.onload = function() {
+                        let receiver = document.getElementById("receiver");
                         const cookie_value = localStorage.getItem("cookie_value");
                         console.log("Attempting to initialize iframe value with local storage: " + cookie_value);
                     
                         if(cookie_value != null) {
-                            iframe.postMessage(cookie_value, '*');
+                            receiver.postMessage(cookie_value, '*');
                         }
                     };
                     
                     iframe.src = 'https://iframehost.pages.dev'; 
+                    iframe.id = 'receiver';
                     iframe_container.appendChild(iframe);
                     
                 }
