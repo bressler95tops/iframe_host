@@ -1,5 +1,7 @@
 window.onload = function() {
     // Get the window displayed in the iframe.
+    console.log("Starting Host...");
+    
     var receiver = document.getElementById('receiver').contentWindow;
 
     // Get a reference to the 'Send Message' button.
