@@ -1,14 +1,14 @@
 document.addEventListener("DOMContentLoaded", function() {
 
 window.addEventListener('message', receiveMessage, false);
+let receiver = document.getElementById('receiver').contentWindow;
+    
 function receiveMessage(event){
     console.log("Received something from embedded iFrame: " + event.origin);
     if(event.origin !== "https://iframehost.pages.dev")
     return;
     localStorage.setItem("cookie_value", event.data);
 }
-
-let receiver = document.getElementById('receiver').contentWindow;
 
 // A function to handle sending messages.
 function init_iframe() {
