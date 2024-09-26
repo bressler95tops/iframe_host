@@ -5,35 +5,40 @@
         <link href="index.css" rel="stylesheet">
     </head>
     <body>
-        <div class="container">
+        <div id="iframe_container" class="container">
             <h1>iFrame Host</h1>
-            <iframe onload="init_iframe()" id="receiver" src="https://iframehost.pages.dev"></iframe>
+            <!-- <iframe onload="init_iframe()" id="receiver" src=""></iframe> -->
         </div>
         <script>
             document.addEventListener("DOMContentLoaded", function() {
 
-            let receiver_obj = document.getElementById('receiver');
-            let receiver = receiver_obj.contentWindow;
-            window.addEventListener('message', receiveMessage, false);
-                
-            function receiveMessage(event){
-                console.log("Received something from embedded iFrame: " + event.origin);
-                if(event.origin !== "https://iframehost.pages.dev")
-                return;
-                console.log("Setting value to local storage: " + event.data);
-                localStorage.setItem("cookie_value", event.data);
-            }
-            
-            // A function to handle sending messages.
-            function init_iframe() {
-                const cookie_value = localStorage.getItem("cookie_value");
-                console.log("Attempting to initialize iframe value with local storage: " + cookie_value);
-            
-                if(cookie_value != null) {
-                    receiver.postMessage(cookie_value, '*');
+                let iframe_container = document.getElementById();
+                window.addEventListener('message', receiveMessage, false);
+                    
+                function receiveMessage(event){
+                    console.log("Received something from embedded iFrame: " + event.origin);
+                    if(event.origin !== "https://iframehost.pages.dev")
+                    return;
+                    console.log("Setting value to local storage: " + event.data);
+                    localStorage.setItem("cookie_value", event.data);
                 }
                 
-            }
+                // A function to handle sending messages.
+                function init_iframe() {
+                    var iframe = document.createElement('iframe');
+                    iframe.onload = function() {
+                        const cookie_value = localStorage.getItem("cookie_value");
+                        console.log("Attempting to initialize iframe value with local storage: " + cookie_value);
+                    
+                        if(cookie_value != null) {
+                            this.postMessage(cookie_value, '*');
+                        }
+                    };
+                    
+                    iframe.src = 'https://iframehost.pages.dev'; 
+                    iframe_container.appendChild(iframe);
+                    
+                }
             
             });
         </script>
