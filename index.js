@@ -1,25 +1,21 @@
+document.addEventListener("DOMContentLoaded", function() {
+
 window.addEventListener('message', receiveMessage, false);
 function receiveMessage(event){
     console.log("Received something from embedded iFrame: " + event.origin);
     if(event.origin !== "https://iframehost.pages.dev")
     return;
-
+    localStorage.setItem("cookie_value", event.data);
 }
 
-var receiver = document.getElementById('receiver').contentWindow;
+let receiver = document.getElementById('receiver').contentWindow;
 
-    // Get a reference to the 'Send Message' button.
-    var btn = document.getElementById('send');
+// A function to handle sending messages.
+function init_iframe() {
+    const cookie_value = localStorage.getItem("cookie_value");
+    receiver.postMessage(cookie_value, '*');
+}
 
-    // A function to handle sending messages.
-    function sendMessage(e) {
-        // Prevent any default browser behaviour.
-        e.preventDefault();
+init_iframe();
 
-        // Send a message with the text 'Hello Treehouse!' to the new window.
-        receiver.postMessage('cookie data!', '*');
-    }
-
-    // Add an event listener that will execute the sendMessage() function
-    // when the send button is clicked.
-    btn.addEventListener('click', sendMessage);
+});
