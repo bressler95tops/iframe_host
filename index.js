@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-let receiver_obj = document.getElementById('receiver')
+let receiver_obj = document.getElementById('receiver');
 let receiver = receiver_obj.contentWindow;
 window.addEventListener('message', receiveMessage, false);
     
