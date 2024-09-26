@@ -18,6 +18,4 @@ function init_iframe() {
     receiver.postMessage(cookie_value, '*');
 }
 
-init_iframe();
-
 });
