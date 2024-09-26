@@ -27,9 +27,13 @@
                 function init_iframe() {
                     var iframe = document.createElement('iframe');
                     iframe.onload = function() {
-                        let receiver = document.getElementById("receiver");
-                        console.log(receiver);
-                        inject_data(receiver);
+
+                        const cookie_value = localStorage.getItem("cookie_value");
+                        console.log("Attempting to initialize iframe value with local storage: " + cookie_value);
+                    
+                        if(cookie_value != null) {
+                            this.contentWindow.postMessage(cookie_value, '*');
+                        }
                     };
                     
                     iframe.src = 'https://iframehost.pages.dev'; 
@@ -39,15 +43,6 @@
                 }
 
                 init_iframe();
-
-                function inject_data(receiver) {
-                    const cookie_value = localStorage.getItem("cookie_value");
-                        console.log("Attempting to initialize iframe value with local storage: " + cookie_value);
-                    
-                        if(cookie_value != null) {
-                            receiver.contentWindow.postMessage(cookie_value, '*');
-                        }
-                }
             
             });
         </script>
