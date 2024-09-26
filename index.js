@@ -1,6 +1,6 @@
 window.addEventListener('message', receiveMessage, false);
 function receiveMessage(event){
-    console.log("Received something from embedded iFrame" + event.origin);
+    console.log("Received something from embedded iFrame: " + event.origin);
     if(event.origin !== "https://iframehost.pages.dev")
     return;
 
